@@ -8,7 +8,14 @@
         </div>
         <div class="mb-4">
             <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control p-2" />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary"> Submit </button>
+            <a asp-controller="Category" asp-action="Index" class="btn btn-secondary"> Back to List </a>
         </div>
     </div>
     
 </form>
+  

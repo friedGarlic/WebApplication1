@@ -18,12 +18,23 @@ namespace WebApplication1.Controllers
             IEnumerable<Category> returnDB = _db.Categories;
             return View(returnDB);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        //form POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Category category)
         {
-            //_db.Categories.Add(category);
-            //_db.SaveChanges();
-            //return RedirectToAction("Index");
-            return View();
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(category);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else { return View(category); }
         }
     }
 }
